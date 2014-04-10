@@ -4,10 +4,10 @@ title: About me
 
 Alexandre Medeiros (alemedeiros)
 
-My name is Alexandre Medeiros, you might find me on IRC as <tt>alemedeiros</tt>.  I'm a
-Computer Science student at University of Campinas (Unicamp), Brazil.
+My name is Alexandre Medeiros, you might find me on IRC as <tt>alemedeiros</tt>.
+I'm a Computer Science student at University of Campinas (Unicamp), Brazil.
 
-I like Computer Theory, Graphs, Computer Architecture, Parallel Programming and
+I like Computer Theory, Graphs, Fuctional Programming, Parallel Programming and
 Mathematics.  I also like to read comics and novels, one of my favourites is
 Scott Pilgrim (the avatar I usually use).
 
