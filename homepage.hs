@@ -15,7 +15,7 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "files/mc102/*" $ do
+    match "files/mc102/*/*" $ do
         route   idRoute
         compile copyFileCompiler
 
