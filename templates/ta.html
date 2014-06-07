@@ -1,0 +1,9 @@
+$body$
+
+<ul>
+    $for(posts)$
+        <li>
+            <a href="$url$">$title$</a> - $if(semester)$ $semester$ $endif$
+        </li>
+    $endfor$
+</ul>

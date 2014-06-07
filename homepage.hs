@@ -7,6 +7,7 @@ import           Hakyll
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
+    -- Get files
     match "imgs/*" $ do
         route   idRoute
         compile copyFileCompiler
@@ -15,11 +16,15 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "files/mc102/*/*" $ do
+    match "files/*/*" $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "files/mc404/*" $ do
+    match "files/*/*/*" $ do
+        route   idRoute
+        compile copyFileCompiler
+
+    match "files/*/*/*/*" $ do
         route   idRoute
         compile copyFileCompiler
 
@@ -27,21 +32,69 @@ main = hakyll $ do
         route   idRoute
         compile compressCssCompiler
 
-    match "ta/*" $ do
+    -- TA pages
+    match "ta.md" $ do
+        route   $ setExtension "html"
+        compile $ do
+            posts <- recentFirst =<< loadAll "ta/*.md"
+            let archiveCtx =
+                    listField "posts" postCtx (return posts) `mappend`
+                    defaultContext
+            pandocCompiler
+                >>= loadAndApplyTemplate "templates/ta.html" archiveCtx
+                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+                >>= relativizeUrls
+
+    match "ta/2012-08-01-mc202.md" $ do
+        route   $ setExtension "html"
+        compile $ do
+            posts <- recentFirst =<< loadAll "ta/2012s2-mc202/*.md"
+            let archiveCtx =
+                    listField "posts" postCtx (return posts) `mappend`
+                    defaultContext
+            pandocCompiler
+                >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
+                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+                >>= relativizeUrls
+
+    match "ta/2013-03-01-mc404.md" $ do
+        route   $ setExtension "html"
+        compile $ do
+            posts <- recentFirst =<< loadAll "ta/2013s1-mc404/*.md"
+            let archiveCtx =
+                    listField "posts" postCtx (return posts) `mappend`
+                    defaultContext
+            pandocCompiler
+                >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
+                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+                >>= relativizeUrls
+
+    match "ta/2014-03-01-mc102.md" $ do
+        route   $ setExtension "html"
+        compile $ do
+            posts <- recentFirst =<< loadAll "ta/2014s1-mc102/*.md"
+            let archiveCtx =
+                    listField "posts" postCtx (return posts) `mappend`
+                    defaultContext
+            pandocCompiler
+                >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
+                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+                >>= relativizeUrls
+
+    match "ta/*/*.md" $ do
         route   $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
-    match (fromList [ "index.md"
-                    , "about.md"
-                    , "ta.md"
-                    ]) $ do
+    -- General pages
+    match "about.md" $ do
         route   $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
+    -- Posts
     match "posts/*" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
@@ -49,13 +102,14 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
+    -- Archive
     create ["archive.html"] $ do
         route idRoute
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
             let archiveCtx =
                     listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Archives"            `mappend`
+                    constField "title" "Archive"             `mappend`
                     defaultContext
 
             makeItem ""
@@ -63,18 +117,17 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
 
-
-    match "index.html" $ do
-        route idRoute
+    -- Main page
+    match "index.md" $ do
+        route $ setExtension "html"
         compile $ do
+            -- TODO: get only 5 last posts.
             posts <- recentFirst =<< loadAll "posts/*"
             let indexCtx =
                     listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Home"                `mappend`
                     defaultContext
-
-            getResourceBody
-                >>= applyAsTemplate indexCtx
+            pandocCompiler
+                >>= loadAndApplyTemplate "templates/archive.html" indexCtx
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= relativizeUrls
 
