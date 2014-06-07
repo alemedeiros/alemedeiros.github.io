@@ -41,7 +41,7 @@ main = hakyll $ do
                     listField "posts" postCtx (return posts) `mappend`
                     defaultContext
             pandocCompiler
-                >>= loadAndApplyTemplate "templates/ta.html" archiveCtx
+                >>= loadAndApplyTemplate "templates/ta.html"      archiveCtx
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
 
@@ -84,7 +84,8 @@ main = hakyll $ do
     match "ta/*/*.md" $ do
         route   $ setExtension "html"
         compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= loadAndApplyTemplate "templates/post.html"    postCtx
+            >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
     -- General pages
