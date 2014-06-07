@@ -1,13 +1,10 @@
-@font-face {
-    font-family: concrete;
-    src: url('../files/cmunorm.ttf');
-}
+@import url(http://fonts.googleapis.com/css?family=Titillium+Web);
 
 body {
     color: #d1cccc;
     background-color: #0e0e0e;
     font-size: 16px;
-    font-family: concrete;
+    font-family: 'Titillium Web', sans-serif;
     margin: 0px auto 0px auto;
     width: 730px;
 }
