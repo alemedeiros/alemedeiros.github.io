@@ -1,6 +1,6 @@
 #!/bin/sh
 
-./homepage build
+./homepage rebuild
 
 case $1 in
   ic)
