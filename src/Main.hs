@@ -1,10 +1,12 @@
---------------------------------------------------------------------------------
+-- src/Main.hs
+--  by alemedeiros <alexandre.n.medeiros _at_ gmail.com>
+--
+-- Hakyll homepage main file
+
 {-# LANGUAGE OverloadedStrings #-}
 import           Data.Monoid (mappend)
 import           Hakyll
 
-
---------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
     -- Get files
