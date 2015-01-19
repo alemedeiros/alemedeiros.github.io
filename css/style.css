@@ -2,8 +2,8 @@
 @import url(http://fonts.googleapis.com/css?family=Comfortaa);
 
 body {
-  color: #d1cccc;
-  background-color: #0e0e0e;
+  color: #dcdcdc;
+  background-color: #2d2d2d;
   font-size: 16px;
   font-family: 'Open Sans', sans-serif;
   margin: 0px auto 0px auto;
@@ -11,13 +11,13 @@ body {
 }
 
 div#header {
-  border-bottom: 2px solid #d1cccc;
+  border-bottom: 2px solid #dcdcdc;
   margin-bottom: 30px;
   padding: 12px 0px 12px 0px;
 }
 
 div#logo a {
-  color: #d1cccc;
+  color: #dcdcdc;
   float: left;
   font-family: 'Comfortaa', sans-serif;
   font-size: 42px;
@@ -29,7 +29,7 @@ div#header #navigation {
 }
 
 div#header #navigation a {
-  color: #d1cccc;
+  color: #dcdcdc;
   font-size: 18px;
   font-weight: bold;
   margin-left: 12px;
@@ -38,7 +38,7 @@ div#header #navigation a {
 }
 
 div#footer {
-  border-top: 2px solid #d1cccc;
+  border-top: 2px solid #dcdcdc;
   color: #555;
   font-size: 12px;
   margin-top: 30px;
@@ -51,7 +51,7 @@ a {
 }
 
 a:hover {
-  color: #8c4481;
+  color: #d64937;
 }
 
 h1 {
