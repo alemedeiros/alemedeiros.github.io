@@ -17,10 +17,15 @@ flame war to defend them any time.
 
 Curriculum vitae:
 
- - [Portuguese](files/cv-br.pdf)
- - [English](files/cv-en.pdf)
+ - [Portuguese][1]
+ - [English][2]
 
 You can find some of my code in here:
 
- - [Github](https://github.com/alemedeiros)
- - [Gitorious](https://gitorious.org/~alemedeiros)
+ - [Github][3]
+ - [Gitorious][4]
+
+[1]: /files/cv-en.pdf "English CV"
+[2]: /files/cv-br.pdf "Portuguese CV"
+[3]: https://github.com/alemedeiros
+[4]: https://gitorious.org/~alemedeiros
