@@ -24,9 +24,9 @@ Curriculum vitae:
 You can find some of my code in here:
 
  - [Github][3]
- - [Gitorious][4]
+ - [GitLab][4]
 
 [1]: /files/cv-br.pdf "Portuguese CV"
 [2]: /files/cv-en.pdf "English CV"
 [3]: https://github.com/alemedeiros
-[4]: https://gitorious.org/~alemedeiros
+[4]: https://gitlab.com/u/alemedeiros
