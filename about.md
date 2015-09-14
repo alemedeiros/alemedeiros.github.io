@@ -2,10 +2,10 @@
 title: About me
 ---
 
-My name is Alexandre Medeiros, my usual nickname is <tt>alemedeiros</tt>.  I'm a
-Computer Science student at University of Campinas (Unicamp), Brazil.
-Currently, I'm on an exchange program, studying for a year on the UK, at Queen
-Mary University of London.
+My name is Alexandre Medeiros, my usual nickname is <tt>alemedeiros</tt>.  I'm
+a Computer Science student at University of Campinas (Unicamp), Brazil. I
+studied in UK, at Queen Mary University of London, for a year on an exchange
+program, Science Without Borders
 
 I like Computing Theory, Graphs, Fuctional Programming, Parallel Programming and
 Mathematics.  I also like to read comics and novels, specially the geeky ones,
