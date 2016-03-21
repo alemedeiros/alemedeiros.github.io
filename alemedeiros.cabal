@@ -28,5 +28,5 @@ executable alemedeiros
 
   build-depends:
     base   >= 4.7,
-    hakyll >= 4.6,
-    pandoc >= 1.12
+    hakyll >= 4.7,
+    pandoc >= 1.14
