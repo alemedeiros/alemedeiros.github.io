@@ -5,7 +5,8 @@ title: About me
 My name is Alexandre Medeiros, my usual nickname is <tt>alemedeiros</tt>.  I'm
 a Computer Science student at University of Campinas (Unicamp), Brazil. I
 studied in UK, at Queen Mary University of London, for a year on an exchange
-program, Science Without Borders
+program, Science Without Borders. I've done a 3 months Software engineering
+internship at Google Belo Horizonte office.
 
 I like Computing Theory, Graphs, Fuctional Programming, Parallel Programming and
 Mathematics.  I also like to read comics and novels, specially the geeky ones,
@@ -13,8 +14,8 @@ like Scott Pilgrim, The Hitchhikers Guide to the Galaxy or any good Science
 Fiction novel.
 
 I'm an Arch Linux user and also a great Free Software enthusiast, my favourite
-programming languages are C, Python and Haskell, my editor is Vim and I shall
-partake a flame war to defend them at any time.
+programming languages are C/C++, Python and Haskell, my editor is Vim and I
+shall partake a flame war to defend them at any time.
 
 Curriculum vitae:
 
