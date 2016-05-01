@@ -7,4 +7,4 @@ img: /images/profile.jpg
 
 My name is Alexandre, a Computer Science student at Unicamp.
 
-You just found my simple blog, have fun!
+You just found my blog, welcome and have fun!

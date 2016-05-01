@@ -1,6 +1,7 @@
 ---
 title: Contact
 img: /images/contact.jpg
+tab_contact: ''
 ---
 
 If you need to reach me, you may do so through my email, available on my CV.
@@ -12,7 +13,7 @@ Curriculum vitae:
 
 You can find some of my code in here:
 
-- [Github][3]
+- [GitHub][3]
 - [GitLab][4]
 
 [1]: /files/cv-br.pdf "Portuguese CV"
