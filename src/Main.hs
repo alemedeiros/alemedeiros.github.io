@@ -40,7 +40,8 @@ main = hakyll $ do
         compile $ do
             posts <- recentFirst =<< loadAll pattern
             let tagCtx =
-                    constField "title" tag                                  `mappend`
+                    constField "title" (tag ++ " Posts")                    `mappend`
+                    constField "tab_blog" ""                                `mappend`
                     listField "posts" (postCtxWithTags tags) (return posts) `mappend`
                     defaultContext
 
