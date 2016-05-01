@@ -101,12 +101,64 @@ Expected values on context:
   <!-- Post Image -->
   <div class="mdl-card__media">
     
+    <img class="article-image" src="./images/alemedeiros.png" border="0" alt>
+    
+  </div>
+  <!-- Post Title -->
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Homepage redesign</h2>
+  </div>
+  <!-- Post Abstract -->
+  
+  <div class="mdl-card__supporting-text">
+    May  1, 2016
+    
+      <br />
+      <a href="./tags/redesign.html">redesign</a>, <a href="./tags/english.html">english</a>
+    
+  </div>
+  
+  <div class="mdl-card__supporting-text">
+    <p>For a long time I’ve thinking about redesigning my page, finally, I’ve done it! I’m still using <a href="https://jaspervdj.be/hakyll/">Hakyll</a>, but now I’m using <a href="https://getmdl.io/">MDL</a> library to give the page a Material Design feel.</p>
+
+    <!--  <p>For a long time I’ve thinking about redesigning my page, finally, I’ve done it! I’m still using <a href="https://jaspervdj.be/hakyll/">Hakyll</a>, but now I’m using <a href="https://getmdl.io/">MDL</a> library to give the page a Material Design feel.</p>
+  -->
+  </div>
+  <!-- Full Post Link -->
+  <div class="mdl-card__actions mdl-card--border">
+    
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="./posts/2016-05-01-redesign.html">
+    
+    
+      Read More
+    
+  </a>
+  </div>
+</div>
+
+  
+    <!-- Post card template - A card to tease for a post with an image on top
+
+Expected values on context:
+- title: Card title
+- teaser, body: Card text; preference: teaser, body
+- more_url, url: url for complete page; preference: more_url, url
+- more: "Read More" text; default to "Read More"
+- img: Path to card image
+- img_alt: Image's alt text
+
+-->
+
+<div class="mdl-cell mdl-card mdl-shadow--2dp">
+  <!-- Post Image -->
+  <div class="mdl-card__media">
+    
     <img class="article-image" src="./images/go-gopher.jpg" border="0" alt>
     
   </div>
   <!-- Post Title -->
   <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text">Introdução a Go para programação paralela</h2>
+    <h2 class="mdl-card__title-text">Introdução a Go</h2>
   </div>
   <!-- Post Abstract -->
   
