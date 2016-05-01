@@ -1,7 +1,5 @@
-<ul>
-    $for(posts)$
-        <li>
-            <a href="$url$">$title$</a> - $date$
-        </li>
-    $endfor$
-</ul>
+$if(posts)$
+  $for(posts)$
+    $partial("templates/post-card.html")$
+  $endfor$
+$endif$

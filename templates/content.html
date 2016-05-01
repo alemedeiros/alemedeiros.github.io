@@ -1,0 +1,39 @@
+<!-- Content template
+
+Expected values on context:
+- title: Title
+- body: Post content
+- img: Path to Content image
+- img_alt: Image's alt text
+
+-->
+<div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+  <!-- Title -->
+  <div class="mdl-card__title post-title ">
+    <h2 class="mdl-card__title-text">$title$</h2>
+  </div>
+  <!-- Image -->
+  <!-- TODO(alemedeiros): Crop image in css? -->
+  $if(img)$
+  <div class="mdl-card__media post-media">
+    <img class="article-image" src="$img$" border="0" alt="">
+  </div>
+  $endif$
+
+  <!-- Content -->
+  <!-- TODO(alemedeiros): see if it is possible to add classes from hakyll -->
+  <div class="mdl-grid post-content">
+    $if(date)$
+    <div class="mdl-cell mdl-cell--8-col mdl-card__supporting-text">
+      Posted on $date$ $if(author)$ <i>by</i> $author$ $endif$
+      $if(tags)$
+      <br/>
+      Tags: $tags$
+      $endif$
+    </div>
+    $endif$
+    <div class="mdl-cell mdl-cell--12-col mdl-card__supporting-text">
+      $body$
+    </div>
+  </div>
+</div>

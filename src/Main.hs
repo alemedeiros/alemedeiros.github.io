@@ -1,144 +1,108 @@
--- src/Main.hs
---  by alemedeiros <alexandre.n.medeiros _at_ gmail.com>
---
--- Hakyll homepage main file
-
+--------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 import           Data.Monoid (mappend)
 import           Hakyll
 
+--------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
-    -- Get files
-    match "imgs/*" $ do
+    -- Images
+    -- TODO(alemedeiros): compress images before deploying / try to make this automatic
+    match "images/*" $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "files/*" $ do
-        route   idRoute
-        compile copyFileCompiler
-
-    match "files/*/*" $ do
-        route   idRoute
-        compile copyFileCompiler
-
-    match "files/*/*/*" $ do
-        route   idRoute
-        compile copyFileCompiler
-
-    match "files/*/*/*/*" $ do
-        route   idRoute
-        compile copyFileCompiler
-
+    -- CSS
     match "css/*" $ do
         route   idRoute
         compile compressCssCompiler
 
-    -- TA pages
-    match "ta.md" $ do
-        route   $ setExtension "html"
-        compile $ do
-            posts <- recentFirst =<< loadAll "ta/*.md"
-            let archiveCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    defaultContext
-            pandocCompiler
-                >>= loadAndApplyTemplate "templates/ta.html"      archiveCtx
-                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
-                >>= relativizeUrls
+    -- Files
+    match ("files/*" .||. "files/*/*" .||. "files/*/*/*" .||. "files/*/*/*/*") $ do
+        route   idRoute
+        compile copyFileCompiler
 
-    match "ta/2012-08-01-mc202.md" $ do
-        route   $ setExtension "html"
-        compile $ do
-            posts <- recentFirst =<< loadAll "ta/2012s2-mc202/*.md"
-            let archiveCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    defaultContext
-            pandocCompiler
-                >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
-                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
-                >>= relativizeUrls
-
-    match "ta/2013-03-01-mc404.md" $ do
-        route   $ setExtension "html"
-        compile $ do
-            posts <- recentFirst =<< loadAll "ta/2013s1-mc404/*.md"
-            let archiveCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    defaultContext
-            pandocCompiler
-                >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
-                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
-                >>= relativizeUrls
-
-    match "ta/2014-03-01-mc102.md" $ do
-        route   $ setExtension "html"
-        compile $ do
-            posts <- recentFirst =<< loadAll "ta/2014s1-mc102/*.md"
-            let archiveCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    defaultContext
-            pandocCompiler
-                >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
-                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
-                >>= relativizeUrls
-
-    match "ta/*/*.md" $ do
+    -- Content pages
+    match (fromList ["about.md", "contact.md"]) $ do
         route   $ setExtension "html"
         compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx
-            >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= saveSnapshot "content"
+            >>= loadAndApplyTemplate "templates/content.html" defaultContext
+            >>= loadAndApplyTemplate "templates/base.html"    defaultContext
             >>= relativizeUrls
 
-    -- General pages
-    match "about.md" $ do
-        route   $ setExtension "html"
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
+    -- TODO(alemedeiros): Teaching pages
+
+    -- TODO(alemedeiros): Create Categories pages
+    tags <- buildTags "posts/*" (fromCapture "tags/*.html")
+    tagsRules tags $ \tag pattern -> do
+        route idRoute
+        compile $ do
+            posts <- recentFirst =<< loadAll pattern
+            let tagCtx =
+                    constField "title" tag                                  `mappend`
+                    listField "posts" (postCtxWithTags tags) (return posts) `mappend`
+                    defaultContext
+
+            makeItem ""
+                >>= loadAndApplyTemplate "templates/archive.html" tagCtx
+                >>= loadAndApplyTemplate "templates/base.html"    tagCtx
+                >>= relativizeUrls
 
     -- Posts
     match "posts/*" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx
-            >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= saveSnapshot "content"
+            >>= loadAndApplyTemplate "templates/content.html" (postCtxWithTags tags)
+            >>= loadAndApplyTemplate "templates/base.html"    (postCtxWithTags tags)
             >>= relativizeUrls
 
-    -- Archive
-    create ["archive.html"] $ do
+    -- Blog main page
+    -- TODO(alemedeiros): Paginate blog page
+    create ["blog.html"] $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
+            posts <- recentFirst =<< loadAllSnapshots "posts/*" "content"
             let archiveCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Archive"             `mappend`
+                    constField "tab_blog" ""                                `mappend`
+                    listField "posts" (postCtxWithTags tags) (return posts) `mappend`
+                    constField "title" "Blog posts"                         `mappend`
                     defaultContext
 
             makeItem ""
                 >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
-                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+                >>= loadAndApplyTemplate "templates/base.html"    archiveCtx
                 >>= relativizeUrls
 
     -- Main page
     match "index.md" $ do
         route $ setExtension "html"
         compile $ do
-            -- TODO: get only 5 last posts.
-            posts <- recentFirst =<< loadAll "posts/*"
+            posts <- fmap (take 3) .
+                    recentFirst =<< loadAllSnapshots "posts/*" "content"
             let indexCtx =
-                    listField "posts" postCtx (return posts) `mappend`
+                    constField "tab_home" ""                                `mappend`
+                    constField "card" ""                                    `mappend`
+                    listField "posts" (postCtxWithTags tags) (return posts) `mappend`
                     defaultContext
-            pandocCompiler
+
+            getResourceBody
+                >>= applyAsTemplate indexCtx
                 >>= loadAndApplyTemplate "templates/archive.html" indexCtx
-                >>= loadAndApplyTemplate "templates/default.html" indexCtx
+                >>= loadAndApplyTemplate "templates/base.html"    indexCtx
                 >>= relativizeUrls
 
-    match "templates/*" $ compile templateCompiler
-
+    -- Templates
+    match "templates/*" $ compile templateBodyCompiler
 
 --------------------------------------------------------------------------------
 postCtx :: Context String
 postCtx =
+    teaserField "teaser" "content" `mappend`
+    constField "tab_blog" "" `mappend`
     dateField "date" "%B %e, %Y" `mappend`
     defaultContext
+
+postCtxWithTags :: Tags -> Context String
+postCtxWithTags tags = tagsField "tags" tags `mappend` postCtx
