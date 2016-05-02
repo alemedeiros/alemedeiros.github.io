@@ -8,7 +8,7 @@ main :: IO ()
 main = hakyll $ do
     -- Images
     -- TODO(alemedeiros): compress images before deploying / try to make this automatic
-    match "images/*" $ do
+    match ("images/*" .||. "favicon.ico") $ do
         route   idRoute
         compile copyFileCompiler
 
