@@ -4,19 +4,14 @@ img: /images/contact.jpg
 tab_contact: ''
 ---
 
-If you need to reach me, you may do so through my email, available on my CV.
-
-Curriculum vitae:
-
-- [Portuguese][1]
-- [English][2]
+If you need to reach me, you may find my contact and any relevant information
+about me on my [CV][1].
 
 You can find some of my code in here:
 
-- [GitHub][3]
-- [GitLab][4]
+- [GitHub][2]
+- [GitLab][3]
 
-[1]: /files/cv-br.pdf "Portuguese CV"
-[2]: /files/cv-en.pdf "English CV"
-[3]: https://github.com/alemedeiros
-[4]: https://gitlab.com/u/alemedeiros
+[1]: /files/cv.pdf "Curriculum Vittae"
+[2]: https://github.com/alemedeiros
+[3]: https://gitlab.com/u/alemedeiros
