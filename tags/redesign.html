@@ -1,36 +1,26 @@
 <!doctype html>
-<!--
-Based on Material Design Lite templates (Copyright 2015 Google Inc).
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-https://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License
--->
 <html lang="en">
 
 <head>
   <!-- Metadata -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="A simple blog.">
+  <meta name="description" content="a simple personal homepage">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-  <title>redesign Posts - Alexandre Medeiros</title>
+  <title>redesign Posts - alemedeiros</title>
+
+  <!-- Material Design Lite -->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-red.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" />
-  <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.purple-red.min.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/syntax.css" />
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/b0a280d94c.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="mdl-base">
@@ -38,7 +28,7 @@ limitations under the License
     <header class="mdl-layout__header mdl-layout__header--waterfall mdl-color--primary">
       <div class="mdl-layout__header-row logo-row">
         <span class="mdl-layout__title">
-          <img class="logo" src="../images/logo.svg" border="0" alt="alemedeiros">
+          <img class="logo" src="../images/logo.svg" border="0" alt="alemedeiros" />
           <span class="mdl-layout__title"> Alexandre Medeiros </span>
         </span>
       </div>
@@ -114,7 +104,7 @@ Expected values on context:
     May  1, 2016
     
       <br />
-      <a href="../tags/redesign.html">redesign</a>, <a href="../tags/english.html">english</a>
+      <a href="../tags/redesign.html"><span class="mdl-chip"><span class="mdl-chip__text">redesign</span></span></a> <a href="../tags/english.html"><span class="mdl-chip"><span class="mdl-chip__text">english</span></span></a>
     
   </div>
   
@@ -143,20 +133,34 @@ Expected values on context:
       </div>
 
       <!-- Footer -->
-      <!-- TODO(alemedeiros): Make footer appear on end of page -->
+      <!-- TODO: Make footer appear on end of page -->
       <footer class="mdl-mini-footer">
         <div class="mdl-mini-footer__left-section">
-          <div class="mdl-logo">&copy; 2013-2016 Alexandre Medeiros</div>
+          <div class="mdl-logo">
+            alemedeiros
+          </div>
+          <!-- TODO: get links from hakyll -->
+          <ul class="mdl-mini-footer__link-list">
+            <li><a href="../index.html">home</a></li>
+            <li><a href="../blog.html">blog</a></li>
+            <li><a href="../about.html">about</a></li>
+            <li><a href="../contact.html">contact</a></li>
+          </ul>
         </div>
         <div class="mdl-mini-footer__right-section">
+          <!-- TODO: get links from hakyll -->
           <ul class="mdl-mini-footer__link-list">
-            <li>Site generated with <a href="http://jaspervdj.be/hakyll">Hakyll</a></li>
+            <li><a href="https://gitlab.com/alemedeiros"><i class="fab fa-gitlab"></i></a></li>
+            <li><a href="https://github.com/alemedeiros"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/alemedeiros/"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="https://www.instagram.com/alemedeiros42/"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://www.facebook.com/alemedeiros42"><i class="fab fa-facebook-f"></i></a></li>
           </ul>
         </div>
       </footer>
     </main>
   </div>
-  <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </body>
 
 </html>
