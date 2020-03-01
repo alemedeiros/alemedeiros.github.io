@@ -5,7 +5,7 @@ tab_about: ''
 ---
 
 My name is Alexandre Medeiros, my usual nickname is alemedeiros. I'm a Software
-Engineer at [Nubank](www.nubank.com.br), I'm a BSc Computer Science graduate
+Engineer at [Nubank](http://www.nubank.com.br), I'm a BSc Computer Science graduate
 from University of Campinas (Unicamp), Brazil. I also studied in UK, at Queen
 Mary University of London, for a year on an exchange program, Science Without
 Borders. While in University I've done a 3 months Software engineering
